@@ -3,6 +3,7 @@ name: Fetch Sleeper Data
 on:
   schedule:
     - cron: '0 2 * * *'  # This will run the workflow daily at 2:00 AM UTC
+    workflow_dispatch:  # Allows manual trigger from GitHub UI
 
 jobs:
   fetch-data:
