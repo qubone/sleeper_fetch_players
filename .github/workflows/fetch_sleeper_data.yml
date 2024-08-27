@@ -26,6 +26,11 @@ jobs:
       
     - name: Fetch Sleeper Data
       run: python fetch_sleeper_data.py
+
+    - name: Cleanup old JSON files
+      run: |
+        find data/ -name "*.json" -type f -mtime +2 -exec rm {} \;
+      shell: bash
       
     - name: Commit and Push Data
       run: |
