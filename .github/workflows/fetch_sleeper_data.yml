@@ -1,6 +1,9 @@
 name: Fetch Sleeper Data
 
 on:
+  push:  # Triggers the workflow on push events
+    branches:
+      - main  # Adjust if your default branch is different
   schedule:
     - cron: '0 2 * * *'  # This will run the workflow daily at 2:00 AM UTC
   workflow_dispatch:  # Allows manual trigger from GitHub UI
