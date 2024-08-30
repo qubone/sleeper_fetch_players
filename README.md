@@ -1,4 +1,4 @@
-# sleeper_fetch_players
+# Sleeper Fetch Players Updater
 
 Using GitHub Actions to periodically perform HTTP GET to fetch players using Sleeper API.
 
