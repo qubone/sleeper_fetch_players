@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Adjust if your default branch is different
   schedule:
-    - cron: '0 2 * * *'  # This will run the workflow daily at 2:00 AM UTC
+    - cron: '0 15 * * *'  # This will run the workflow daily at 17:00 UTC+2
   workflow_dispatch:  # Allows manual trigger from GitHub UI
 
 jobs:
@@ -24,14 +24,9 @@ jobs:
     - name: Install dependencies
       run: pip install requests
       
-    - name: Fetch Sleeper Data
+    - name: Fetch Sleeper Player Database
       run: python fetch_sleeper_data.py
 
-    - name: Cleanup old JSON files
-      run: |
-        find data/ -name "*.json" -type f -mtime +2 -exec rm {} \;
-      shell: bash
-      
     - name: Commit and Push Data
       run: |
         git config --local user.email "actions@github.com"
