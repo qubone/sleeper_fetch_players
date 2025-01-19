@@ -22,17 +22,22 @@ jobs:
         python-version: '3.x'
         
     - name: Install dependencies
-      run: pip install requests
+      run: pip install requests click
       
-    - name: Fetch Sleeper Player Database
-      run: python fetch_sleeper_data.py
+    - name: Fetch Sleeper NFL player database
+      run: python fetch_sleeper_data.py --sport nfl
+    
+    - name: Fetch Sleeper NBA player database
+      run: python fetch_sleeper_data.py --sport nba
 
     - name: Commit and Push Data
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
-        git add data/
-        git commit -m "Automated update of Sleeper data"
+        git add nfl/
+        git commit -m "Automated update of Sleeper NFL data"
+        git add nba/
+        git commit -m "Automated update of Sleeper NBA data"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
